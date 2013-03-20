@@ -1,0 +1,16 @@
+#ifndef	__VOC_HH__
+#define	__VOC_HH__
+
+#include <string>
+
+class	Voc
+{
+public:
+  Voc(const std::string &left, const std::string &right);
+  ~Voc();
+private:
+  std::string	_left;
+  std::string	_right;
+};
+
+#endif

@@ -1,0 +1,60 @@
+#include <iostream>
+#include <fstream>
+#include "Learn.hh"
+
+Learn::Learn()
+{
+  _nb = 0;
+  _repTrue = 0;
+  _repFalse = 0;
+}
+
+Learn::~Learn()
+{
+
+}
+
+void	Learn::add_voc(const std::string &line)
+{
+  std::string	left;
+  std::string	right;
+  int		i = -1;
+
+  while (line[++i] != '=')
+    left += line[i];
+  while (line[++i] != '\0')
+    right += line[i];
+  _voc.push_back(new Voc(left, right));
+  _nb++;
+}
+
+void	Learn::load(const std::string &path)
+{
+  std::ifstream	file;
+  std::string	line;
+
+  file.open(path.c_str());
+  if (file.is_open()) 
+    {
+      while (!file.eof()) 
+	{
+	  getline(file, line);
+	  add_voc(line);
+	}
+      file.close();
+    }
+  std::cout << _nb << " line loaded" << std::endl;
+}
+
+void	Learn::exec()
+{
+  int	max;
+
+  std::cout << "\033[H\033[2J";
+  std::cout << "Nombre de questions : ";
+  std::cin >> max;
+  for (int i = 0; i < max; i++)
+    {
+      
+    }
+}

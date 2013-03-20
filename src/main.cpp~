@@ -1,0 +1,6 @@
+#include "Learn.hh"
+
+int	main()
+{
+  return (0);
+}
