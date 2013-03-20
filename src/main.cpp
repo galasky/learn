@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Learn.hh"
 
 int	main(int ac, char **av)
@@ -11,5 +12,7 @@ int	main(int ac, char **av)
       learn.load(path);
       learn.exec();
    }
+  else
+    std::cout << "USAGE : ./learn LISTE_DE_VOCABULAIRE" << std::endl;
   return (0);
 }

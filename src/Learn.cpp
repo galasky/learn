@@ -63,7 +63,11 @@ void	Learn::load(const std::string &path)
 	}
       file.close();
     }
-  std::cout << _nb << " line loaded" << std::endl;
+  if (_nb == 0)
+    {
+      std::cout << "ERROR FILE NO EXIST" << std::endl;
+      exit(0);
+    }
 }
 
 void	Learn::exec()
