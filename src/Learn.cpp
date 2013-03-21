@@ -82,8 +82,14 @@ void	Learn::exec()
   for (int i = 0; i < max; i++)
     {
       nb = random(0, _nb);
+      int u = 0;
+      while (_voc[nb]->isOk() == true)
+	{
+	  nb = random(0, _nb);
+	  u++;
+	}
       std::cout << "\033[H\033[2J";
-      std::cout << "N° " << i +1 << ": ";
+      std::cout << "N°" << i + 1 << " : ";
       std::cout << _voc[nb]->left() << std::endl;
       std::cout << "avez-vous la reponse ? (y/n)" << std::endl;
       std::cin >> rep;
@@ -93,7 +99,10 @@ void	Learn::exec()
 	  std::cout << std::endl << "avez-vous juste ? (y/n)" << std::endl;
 	  std::cin >> rep;
 	  if (rep == "y")
-	    _repTrue++;
+	    {
+	      _voc[nb]->ok();
+	      _repTrue++;
+	    }
 	  else
 	    _repFalse++;
 	}
@@ -105,6 +114,6 @@ void	Learn::exec()
     }
   std::cout << "\033[H\033[2J";
   std::cout << "Auto evaluation terminee!" << std::endl << std::endl;
-  std::cout << "Vous avez " << _repTrue << " de reponses justes sur " << max << " questions" << std::endl;
+  std::cout << "Vous avez " << _repTrue << " reponses justes sur " << max << " questions" << std::endl;
   std::cout << "Cela vous fait un ratio de " << ((float) _repTrue) / max << std::endl;
 }
