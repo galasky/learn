@@ -32,6 +32,8 @@ void	Learn::add_voc(const std::string &line)
   std::string	right;
   int		i = -1;
 
+  if (line == "")
+    return ;
   while (line[++i] != '=' && line[i])
     left += line[i];
   if (line[i] == '\0')
@@ -74,6 +76,7 @@ void	Learn::exec()
 {
   int		max;
   int		nb;
+  int		side;
   std::string	rep;
 
   std::cout << "\033[H\033[2J";
@@ -83,17 +86,18 @@ void	Learn::exec()
     {
       nb = random(0, _nb);
       int u = 0;
-      while (_voc[nb]->isOk() == true)
+      while (_voc[nb]->isOk() == true && u < _nb * 2)
 	{
 	  nb = random(0, _nb);
 	  u++;
 	}
+      side = random(0,2);
       std::cout << "\033[H\033[2J";
       std::cout << "N°" << i + 1 << " : ";
-      std::cout << _voc[nb]->left() << std::endl;
+      std::cout << (side == 0 ? _voc[nb]->right() : _voc[nb]->left()) << std::endl;
       std::cout << "avez-vous la reponse ? (y/n)" << std::endl;
       std::cin >> rep;
-      std::cout << std::endl << "la reponse etait : " << _voc[nb]->right() << std::endl;
+      std::cout << std::endl << "la reponse etait : " << (side == 0 ? _voc[nb]->left() : _voc[nb]->right()) << std::endl;
       if (rep == "y")
 	{
 	  std::cout << std::endl << "avez-vous juste ? (y/n)" << std::endl;
