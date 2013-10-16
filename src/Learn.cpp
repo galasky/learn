@@ -119,5 +119,5 @@ void	Learn::exec()
   std::cout << "\033[H\033[2J";
   std::cout << "Auto evaluation terminee!" << std::endl << std::endl;
   std::cout << "Vous avez " << _repTrue << " reponses justes sur " << max << " questions" << std::endl;
-  std::cout << "Cela vous fait un ratio de " << ((float) _repTrue) / max << std::endl;
+  std::cout << "Cela vous fait " << (((float) _repTrue) / max) * 100 << " % de reussite" << std::endl;
 }
